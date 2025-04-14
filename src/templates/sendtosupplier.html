@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributor Management System</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/pharmalogo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/header.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header1.css') }}">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .container {
+margin-top: 20px;
+}
+
+.table {
+width: 100%;
+border-collapse: collapse;
+border: 2px solid #090909;
+}
+
+th,
+td {
+border: 2px solid #030303;
+padding: 8px;
+text-align: left;
+}
+
+body {
+font-family: Arial, sans-serif;
+background-color: #f2f2f2;
+}
+
+.info-container {
+color: #fff;
+/* White text */
+padding: 20px;
+margin-bottom: 20px;
+margin-top: -30px;
+}
+
+.form-control {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border: 1px solid #ced4da;
+/* Light gray border */
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+.btn-warning {
+background-color: #ffc107;
+/* Yellowish color */
+border: none;
+color: #fff;
+padding: 10px 20px;
+border-radius: 4px;
+cursor: pointer;
+}
+
+.btn-warning:hover {
+background-color: #ffca28;
+/* Lighter yellow on hover */
+}
+
+span {
+display: block;
+margin-top: 10px;
+}
+
+span.error {
+color: red;
+}
+
+span.success {
+color: green;
+}
+
+h1,
+h2 {
+display: inline-block;
+color: #165bbc;
+font-size: 28px;
+text-align: center;
+font-weight: bold;
+margin-bottom: 0;
+/* Remove margin bottom */
+
+
+&::after {
+ content: "";
+ width: 100%;
+ display: inline-block;
+ transform: translate(-0%, -15px);
+ height: 3px;
+ border-radius: 50%;
+ background-color: #ADC2E1;
+ opacity: 0.9;
+ background: linear-gradient(to right bottom, #839fc8, #2e64b0, #165bbc);
+}
+}
+
+.container {
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: -60px;
+margin-bottom: 20px;
+}
+
+.container h2 {
+display: inline-block;
+color: #165bbc;
+font-size: 28px;
+text-align: center;
+font-weight: bold;
+margin-bottom: 0;
+/* Remove margin bottom */
+}
+
+.container.col-sm-12 {
+width: 90%;
+margin: 20px auto;
+margin-left: 90px;
+margin-top: -30px;
+/* Adjust margin as needed */
+}
+</style>
+    </head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    {% include 'header-inner2.html' %}
+    <div class="info-container">
+        <h1>Distributor Management System</h1>
+
+    </div>
+
+    <div class="container">
+        <h2 id="popupTitle">Send to Supplier</h2>
+        <form action="/sendtosupplierform" method="post">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="sel1">Select the product that you want to distribute:</label>
+                    <select class="form-control" id="lotlabform" name='productid' required>
+                        {%for i in range(0, l1)%}
+                        <option value="{{dashboard_data1[i][0]}}">{{dashboard_data1[i][1]}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sel1">Select the supplier to whom you want to distribute:</label>
+                    <select class="form-control" id="lotlabform" name='supplierid' required>
+                        {%for i in range(0, l2)%}
+                        <option value="{{dashboard_data2[i][0]}}">{{dashboard_data2[i][1]}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn btn-warning" style="margin-left: 370px;">Send it to Distributor</button>
+            </div>
+            <span style="color:red">{{err}}</span>
+            <span style="color:green">{{res}}</span>
+        </form>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+
+</html>

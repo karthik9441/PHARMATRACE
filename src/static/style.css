@@ -1,0 +1,475 @@
+.decorate-shape {
+  position: absolute;
+  width: 90%;
+  height: auto;
+  z-index: -1;
+  transform: rotate(-90deg) translate(60%, 50%);
+  outline: none;
+
+  img {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+main {
+  height: 90vh;
+  margin-top: 30px;
+}
+
+.main-section {
+  padding: 5px 0;
+}
+
+.main-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.main-inner-box {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.main-inner-box h2 {
+  color: rgb(5, 5, 5);
+  text-align: center;
+}
+
+.main-inner-box ul {
+  padding: 0 1.2rem;
+}
+
+.main-inner-box ul li {
+  padding: 10px 0;
+}
+
+section#about {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+section#about h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+section#about p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+section#about h2 {
+  font-size: 1.5em;
+  margin-top: 40px;
+}
+
+.form-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-btns button {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: #fff;
+  width: 20%;
+  border: none;
+  border-radius: 4px;
+}
+
+
+/* Heading for Pharma Trace */
+.pharma-trace-heading {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Image for Pharma Trace */
+.pharma-trace-image {
+  width: 90%;
+  height: 90%;
+  max-height: 200px;
+  object-fit: cover;
+  margin: 10 center;
+  display: block;
+  margin-left: 300px;
+}
+
+aside#image-container {
+  position: absolute;
+  right: 4%;
+  top: 25%;
+  width: 40%;
+  display: grid;
+  place-items: center;
+}
+
+#rightImage {
+  width: 500px;
+  height: auto;
+
+  img {
+    background-size: cover;
+  }
+}
+
+.product-details-container {
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.product-details-table {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.product-details-table thead th {
+  background-color: #e0e0e0;
+  text-align: left;
+  padding: 10px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.product-details-table tbody td {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.product-path {
+  margin-top: 20px;
+}
+
+aside#main-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container for the entire user interface */
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+div.search {
+  display: inline-block;
+  position: relative;
+}
+
+div.search input[type="text"] {
+  width: 400px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+div.search button[type="submit"] {
+  background-color: #ADC2E1;
+  border: none;
+  color: #165bbc;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: .7s ease;
+}
+
+div.search button[type="submit"]:hover {
+  transform: scale(1.1);
+  color: #FEFEFE;
+  /* background-color: #232323; */
+  background-color: #165bbc;
+}
+
+
+#cameraContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  /* This will move the container to the right */
+  margin-right: auto;
+  /* Adjust margin as needed */
+  margin-top: 0px;
+}
+
+#toggleButton {
+  padding: 12px;
+  background-color: #060606;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+#toggleButton:hover {
+  background-color: #0a0a0a;
+}
+
+
+
+/* Style for the dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style for the overlay buttons */
+.overlay-btns {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Style for the overlay button items */
+.overlay-btns button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Style for the overlay button items on hover */
+.overlay-btns button:hover {
+  background-color: #ddd;
+}
+
+/* Show the overlay buttons when hovering over the profile button */
+.dropdown:hover .overlay-btns {
+  display: block;
+}
+
+/* Style for the profile button */
+.profile-btn {
+  background-color: #f8f7f7;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Style for the overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for the popup content */
+.popup-content {
+  background-color: rgb(42, 41, 41);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: left;
+}
+
+/* Style for the close button in the popup */
+.close-btn1 {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 620px;
+}
+
+
+.info-container {
+  text-align: center;
+}
+
+.info-container h1 {
+  margin-bottom: 20px;
+}
+
+.info-options-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.info-options-box button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.info-options-box button:hover {
+  background-color: #2980b9;
+}
+
+/* Style the form container */
+    form {
+        display: flex;
+        align-items: center;
+        border-radius: 20px; /* Rounded corners for the form */
+        overflow: hidden; /* Hide overflowed content to avoid overflow of curved corners */
+    }
+
+    /* Style the search input */
+    input[type="search"] {
+        flex: 1; /* Take up remaining space */
+        padding: 10px; /* Adjust padding as needed */
+        border: 1px solid #ccc; /* Border color for the input */
+        border-radius: 20px; /* Rounded corners for the input */
+        outline: none; /* Remove outline */
+        width: 300px;
+    }
+
+    /* Style the search button */
+    button[type="submit"] {
+        padding: 10px 20px; /* Adjust padding as needed */
+        background-color: rgb(8, 76, 223); /* Default background color for the button */
+        color: white; /* Text color for the button */
+        border: none; /* Remove border */
+        border-radius: 20px; /* Rounded corners for the button */
+        cursor: pointer; /* Change cursor to pointer on hover */
+        transition: background-color 0.3s; /* Smooth transition for background color change */
+        margin-left: -40px;
+    }
+
+    /* Change button color on hover */
+    button[type="submit"]:hover {
+        background-color: rgb(8, 76, 223); /* New background color on hover */
+    }
+
+    .container-fluid {
+      padding: 20px;
+  }
+  
+  .row {
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  .col-sm-2,
+  .col-sm-8 {
+      position: relative;
+      min-height: 1px;
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+  
+  .col-sm-2 {
+      flex: 0 0 16.66667%;
+      max-width: 16.66667%;
+  }
+  
+  .col-sm-8 {
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
+  }
+  
+  .product-details-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: -220px;
+  }
+  
+  .product-details-container h2 {
+      color: #165bbc;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  
+  .product-details-table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  
+  .product-details-table th,
+  .product-details-table td {
+      border: 2px solid #ddd;
+      padding: 8px;
+      text-align: left;
+  }
+  
+  .product-details-table th {
+      background-color: #f2f2f2;
+  }
+  
+  .product-details-table tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+  
+  .product-details-table tbody tr:hover {
+      background-color: #e0e0e0;
+  }
+  
+  .product-details-table th,
+  .product-details-table td {
+      padding: 8px;
+      border: 1px solid #ddd;
+  }
+  
+  .product-path {
+      margin-top: 20px;
+  }
+  
+  .no-product-details {
+    text-align: center;
+    font-weight: bold;
+    margin-top: -200px; /* Adjust margin top as needed */
+}

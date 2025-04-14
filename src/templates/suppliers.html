@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributor Management System</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/pharmalogo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/header.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='internal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header1.css') }}">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .info-container {
+        color: #fff;
+        /* White text */
+        padding: 20px;
+        margin-bottom: 20px;
+        margin-top: -30px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ced4da;
+        /* Light gray border */
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        /* Yellowish color */
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-warning:hover {
+        background-color: #ffca28;
+        /* Lighter yellow on hover */
+    }
+
+    span {
+        display: block;
+        margin-top: 10px;
+    }
+
+    span.error {
+        color: red;
+    }
+
+    span.success {
+        color: green;
+    }
+
+    h1,
+    h2 {
+        display: inline-block;
+        color: #165bbc;
+        font-size: 28px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 0;
+        /* Remove margin bottom */
+
+
+        &::after {
+            content: "";
+            width: 100%;
+            display: inline-block;
+            transform: translate(-0%, -15px);
+            height: 3px;
+            border-radius: 50%;
+            background-color: #ADC2E1;
+            opacity: 0.9;
+            background: linear-gradient(to right bottom, #839fc8, #2e64b0, #165bbc);
+        }
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: -60px;
+        margin-bottom: 20px;
+    }
+
+    .container h2 {
+        display: inline-block;
+        color: #165bbc;
+        font-size: 28px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 0;
+        /* Remove margin bottom */
+    }
+    </style>
+    </head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    {% include 'header-inner2.html' %}
+    <div class="info-container">
+        <h1>Supplier Management System</h1>
+    </div>
+
+    <div class="container">
+        <h2 id="popupTitle">Add Supplier</h2>
+        <form action="/supplierForm" method="post">
+                <div class="col-sm-6">
+                <label for="distributorId">1. Supplier ID:</label>
+                <input type="text" id="distributorId" name="supplierId" class="form-control" required> <br/>
+
+                <label for="distributorName">2. Supplier Name:</label>
+                <input type="text" id="distributorName" name="supplierName" class="form-control" required> <br/>
+
+                <label for="contactInfo">3. Contact Information:</label>
+                <input type="text" id="contactInfo" Name="contactInfo" class="form-control" required> <br/>
+
+                <label for="address">4. Address:</label>
+                <input type="text" id="address" name="address" class="form-control" required> <br/>
+
+                <label for="email">5. Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required> <br/>
+
+                <label for="phone">6. Phone Number:</label>
+                <input type="tel" id="phone" name="phone" class="form-control" required> <br/>
+            </div>
+            <div class="col-sm-6" style="margin-bottom: 50px;">
+                <label for="tin">7. Tax Identification Number (TIN):</label>
+                <input type="text" id="tin" name="tin" class="form-control" required> <br/>
+
+                <label for="brn">8. Business Registration Number (BRN):</label>
+                <input type="text" id="brn" name="brn" class="form-control" required> <br/>
+
+                <label for="wallet">9. Wallet Address:</label>
+                <input type="text" id="wallet" name="wallet" class="form-control" required> <br/>
+
+                <label for="emergencyContact">10. Emergency Contact Information:</label>
+                <input type="text" id="emergencycontact" name="emergencycontact" class="form-control" required> <br/>
+
+                <label for="password">11. Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required> <br/>
+            
+                
+                <button type="submit" class="btn btn-warning" style="margin-left: 20px;">Add Supplier</button>
+                </div>
+                <span style="color:red">{{err}}</span>
+                <span style="color:green">{{res}}</span>
+        </form>
+    
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/static.js') }}" defer></script>
+    </body>
+
+</html>

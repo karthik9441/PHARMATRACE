@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+    <title>Pharma Trace</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='default.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='header1.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='footer.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap-css/bootstrap.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+    <script src="../static/js/qr-code-script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body bgcolor="#FEFEFE">
+    {% include 'header1.html' %}
+
+    <div class="decorate-shape">
+        <img src="../static/images/right-decorate.png" alt="  " width="100px">
+    </div>
+    <main>
+        <aside id="main-content">
+            <section class="user-container">
+                <div class="opt-home search-product-id">
+                    <form action="/searchproduct" method="post">
+                        <input type="search" placeholder="Search by Product Id...." id="search-product" name="productid"
+                            autocomplete="off">
+                        <button type="submit">Go</button>
+                    </form>
+                </div>
+            </section>
+                
+                <span style="color:green">{{res}}</span>
+                <span style="color: red; position: absolute; top: 0; margin-right: -750px;">{{err}}</span>
+
+           
+            <section class="user-container">
+                <div class="opt-home search-product-qr">
+                    <div id="qr-reader" style="width:320px;border-radius:20px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)">
+                    </div>
+                    <div id="qr-reader-results"></div>
+                </div>
+            </section>
+        </aside>
+        <aside id="image-container">
+            <div id="rightImage">
+                <img src="../static/images/qr-code-svg.svg" alt="Pharma Trace Logo">
+            </div>
+        </aside>
+    </main>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                {% if data %}
+                <div class="product-details-container">
+                    <h2>These are the details you can find by scanning or by entering product ID. Follow the path to
+                        see
+                        the product's journey:</h2>
+
+                    <table class="product-details-table table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="background-color: #ADC2E1;">Product Information</th>
+                                <th scope="col" style="background-color: #ADC2E1;">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product Id</td>
+                                <td>{{ data[0] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Product Name</td>
+                                <td>{{ data[1] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Manufacturing Information</td>
+                                <td>{{ data[2] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Distributor</td>
+                                <td>{{ data[3] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Supplier</td>
+                                <td>{{ data[4] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Date of Manufacturing</td>
+                                <td>{{ data[5] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Date of Expiry</td>
+                                <td>{{ data[6] }}</td>
+                            </tr>
+                            <tr>
+                                <td>Product Price</td>
+                                <td>{{ data[7] }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="product-path">
+                    </div>
+                </div>
+                {% else %}
+                <h2 class="no-product-details">No product details available. Scan QR or enter Product ID.</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- <section>
+        <div class="container">
+            <h1 style="color: var(--primary-color);">Process</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error facilis blanditiis quisquam nesciunt vero
+                repellendus explicabo repellat. Quidem repellat labore tenetur odio fugit quos, voluptate facere illo
+                dolorum voluptatem eveniet?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, repellat id laboriosam numquam explicabo
+                dolorum aliquam ab nulla neque labore non inventore, rem perspiciatis fugit eligendi sit temporibus
+                animi? Nulla?</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error facilis blanditiis quisquam nesciunt vero
+                repellendus explicabo repellat. Quidem repellat labore tenetur odio fugit quos, voluptate facere illo
+                dolorum voluptatem eveniet?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, repellat id laboriosam numquam explicabo
+                dolorum aliquam ab nulla neque labore non inventore, rem perspiciatis fugit eligendi sit temporibus
+                animi? Nulla?</p>
+        </div>
+        <div class="container ">
+            <h1 style="color: var(--primary-color);">Process</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error facilis blanditiis quisquam nesciunt vero
+                repellendus explicabo repellat. Quidem repellat labore tenetur odio fugit quos, voluptate facere illo
+                dolorum voluptatem eveniet?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, repellat id laboriosam numquam explicabo
+                dolorum aliquam ab nulla neque labore non inventore, rem perspiciatis fugit eligendi sit temporibus
+                animi? Nulla?</p>
+        </div>
+    </section> -->
+
+
+    <script>
+        function openPopup(popupId) {
+            var otherPopups = document.querySelectorAll('.popup');
+            for (var i = 0; i < otherPopups.length; i++) {
+                if (otherPopups[i].id !== popupId) {
+                    otherPopups[i].style.display = "none";
+                }
+            }
+
+            document.getElementById(popupId).style.display = "block";
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            var popups = document.querySelectorAll('.popup');
+            for (var i = 0; i < popups.length; i++) {
+                if (event.target == popups[i] || event.target.classList.contains('close-btn')) {
+                    popups[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+    <script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/html5-qrcode.min.js') }}"></script>
+
+    <script>
+        function docReady(fn) {
+            if (document.readyState === "complete"
+                || document.readyState === "interactive") {
+                setTimeout(fn, 1);
+            } else {
+                document.addEventListener("DOMContentLoaded", fn);
+            }
+        }
+
+        docReady(function () {
+            var resultContainer = document.getElementById('qr-reader-results');
+            var lastResult, countResults = 0;
+            function onScanSuccess(decodedText, decodedResult) {
+                if (decodedText !== lastResult) {
+                    ++countResults;
+                    lastResult = decodedText;
+
+                    console.log(`Scan result ${decodedText}`, decodedResult);
+                    document.getElementById('qr-reader-results').innerHTML = decodedText;
+                    location.href = "/searchproduct?productid=" + decodedText;
+
+                }
+            }
+
+            var html5QrcodeScanner = new Html5QrcodeScanner(
+                "qr-reader", { fps: 10, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess);
+        });
+    </script>
+
+    {% include 'footer.html' %}
+
+</body>
+
+</html>

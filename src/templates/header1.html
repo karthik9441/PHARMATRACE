@@ -1,0 +1,71 @@
+<section id="header-container">
+    <header id="floating-header-container">
+        <div id="floating-header">
+            <ul>
+                <li><a href="/" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Distributors Management System">Home</a></li>
+                <li><a href="{{ url_for('aboutushome') }}">About Us</a></li>
+                <li><button type="button" onclick="openPopup('loginPopup')">Manufacturer</button></li>
+                <li><button type="button" onclick="openPopup('distributorPopup')">Distributor</button></li>
+            </ul>
+        </div>
+    </header>
+</section>
+<div class="logo-box">
+    <div class="header-logo">
+        <img src="{{ url_for('static', filename='images/pt-logo-png.png') }}" alt="Example Image" class="logo">
+        <!-- <h5 id="logo-title">Pharma Trace</h5> -->
+    </div>
+</div>
+<div class="popup login-popup" id="loginPopup">
+    <span class="close-btn" onclick="closePopup('loginPopup')">X</span>
+    <!-- <h2 id="loginHeading">Login Form</h2> -->
+    <p class="form-title">Login to your account</p>
+
+    <form class="form" id="loginForm" action="/loginManufacturer" method="post">
+        <div class="input-container">
+            <input type="text" placeholder="Manufacturer Wallet Address" id="manufacturerWallet"
+                name="manufacturerWallet" required>
+            <span></span>
+        </div>
+        <div class="input-container">
+            <input type="password" placeholder="Enter password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="submit" value="Login">
+            Login
+        </button>
+
+        <!-- <p class="signup-link">
+            No account?
+            <a href="">Sign up</a>
+        </p> -->
+        <span style="color:red">{{err}}</span>
+        <span style="color:green">{{res}}</span>
+    </form>
+</div>
+
+<div class="popup distributor-popup" id="distributorPopup">
+    <span class="close-btn" onclick="closePopup('distributorPopup')">X</span>
+    <p class="form-title">Login to your account</p>
+
+    <form class="form" id="loginForm" action="/loginDistributor" method="post">
+        <div class="input-container">
+            <input type="text" placeholder="Distributor Wallet Address" id="distributorWallet" name="distributorWallet"
+                required>
+            <span></span>
+        </div>
+        <div class="input-container">
+            <input type="password" placeholder="Enter password" id="password" name="password1" required>
+        </div>
+        <button type="submit" class="submit" value="Login">
+            Login
+        </button>
+
+        <!-- <p class="signup-link">
+            No account?
+            <a href="">Sign up</a>
+        </p> -->
+        <span style="color:red">{{err}}</span>
+        <span style="color:green">{{res}}</span>
+    </form>
+</div>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturer Admin Portal</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.7;
+            font-weight: 300;
+            color: var(--text-gray);
+        }
+
+        main {
+            background-color: #fefefe;
+        }
+
+        .section {
+            width: 100%;
+            background-color: #fefefe;
+            display: flex;
+            flex-direction: row;
+            /* justify-content: center; */
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .content-section {
+            width: 50%;
+            display: grid;
+            place-items: center;
+        }
+
+        .image-section {
+            width: 50%;
+            display: grid;
+            place-items: center;
+            grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+            grid-row-gap: 1rem;
+
+            >img {
+                width: 60%;
+                height: auto;
+                border-radius: 15px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+            }
+
+        }
+
+        /* General styling for larger screens */
+        .content-section .content h3 {
+            margin-top: 20px;
+            color: #165bbc;
+            font-size: 21px;
+        }
+
+        .content-section .content p {
+            margin-top: 10px;
+            font-family: sans-serif;
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        @media screen and (max-width: 768px) {
+            .content-section .content h3 {
+                font-size: 18px;
+            }
+
+            .content-section .content p {
+                font-size: 16px;
+            }
+        }
+
+        .heading-box {
+            display: grid;
+            place-items: center;
+        }
+
+        .heading-box h1 {
+            display: inline-block;
+            color: #165bbc;
+            font-size: 28px;
+            text-align: center;
+            font-weight: bold;
+
+            &::after {
+                content: "";
+                width: 100%;
+                display: inline-block;
+                transform: translate(-0%, -15px);
+                height: 3px;
+                border-radius: 50%;
+                background-color: #ADC2E1;
+                opacity: 0.9;
+                background: linear-gradient(to right bottom, #839fc8, #2e64b0, #165bbc);
+            }
+        }
+
+        .wrap {
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+            gap: 24px;
+            padding: 24px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            position: relative;
+            padding: 24px;
+            background: #fff;
+        }
+
+        .box-top {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            gap: 12px;
+
+            .description p {
+                color: #222;
+            }
+        }
+
+        .title-flex {
+            .box-title {
+                color: #165bbc;
+            }
+
+            .user-follow-info {
+                color: #2e64b0;
+            }
+        }
+
+        .box-image {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 12px;
+            object-position: 50% 20%;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        }
+
+        .button {
+            display: grid;
+            place-items: center;
+            margin-top: auto;
+            padding: 16px;
+            color: #165bbc;
+            border-radius: 15PX;
+            text-decoration: none;
+            background: #ADC2E1;
+            border: 1px solid #165bbc;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            transition: all 0.4s ease;
+
+            &:is(:hover, :focus) {
+                color: #fefefe;
+                text-decoration: none;
+                font-weight: normal;
+                background-color: #165bbc;
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .box {
+                flex-basis: calc(25% - 18px);
+            }
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-left: 20px;
+        }
+
+        .main-section {
+            background-color: var(--light-gray-bg);
+            padding: 50px 0;
+        }
+
+
+        .main-inner-box1 {
+            flex-basis: calc(33.33% - 20px);
+            margin-bottom: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+        }
+
+        .main-inner-box2 {
+            flex-basis: calc(33.33% - 20px);
+            margin-bottom: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 60px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    {% include 'header1.html' %}
+
+    <main class="container-fluid mx-5">
+        <form action="/pharmatrace">
+            <section class="section">
+                <div class="content-section">
+                    <div class="content">
+                        <div class="heading-box">
+                            <h1>Enhancing Pharmaceutical Transparency</h1>
+                        </div>
+                        <p><strong><i>PharmaTrace</i></strong> is dedicated to revolutionizing the pharmaceutical
+                            industry by
+                            ensuring
+                            transparency and safety through innovative traceability solutions. Our mission is to
+                            provide accurate and accessible information about pharmaceutical products to consumers and
+                            stakeholders.
+                        </p>
+                        <p>Scanning a QR code on medicine packages reveals essential details such as the medicine's
+                            name, batch number, expiry date, and manufacturing date. This, combined with blockchain
+                            technology, ensures secure and accessible data. The goal is to create a user-friendly
+                            system for easy access to medication information, facilitating informed decision-making
+                            in healthcare. Integrating QR codes on medicine packages serves as a gateway to vital
+                            details, enhancing accessibility and data security. Blockchain technology strengthens
+                            system integrity using hashing for tamper resistance. This security measure allows users
+                            to confidently trace a tablet sheet's journey from manufacturing to distribution,
+                            empowering informed healthcare decisions and fostering transparency in the
+                            pharmaceutical supply chain.</p>
+                    </div>
+                </div>
+                <div class="image-section">
+                    <img src="https://pharmastate.academy/wp-content/uploads/2022/04/QR-Final.jpg"
+                        alt="Pharma Trace Image">
+
+                    <img src="https://plus.unsplash.com/premium_photo-1670981099497-078707655bd4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI1fHxwaGFybWFjZXV0aWNhbHxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="Pharma Trace Image">
+                </div>
+            </section>
+
+            <section>
+                <div class="heading-box">
+                    <h1>Developers Info</h1>
+                </div>
+                <div class="wrap">
+                    <div class="box">
+                        <div class="box-top">
+                            <img class="box-image" src="{{ url_for('static', filename='images/eshwar.png') }}"
+                                alt="eshwar.png">
+                            <div class="title-flex">
+                                <h3 class="box-title">Eshwara rao Allu</h3>
+                                <h5 class="user-follow-info">Full Stack Developer</h5>
+                            </div>
+                            <div class="description">
+                                <p> Committed to continuous self-improvement, staying updated on the latest
+                                    technologies
+                                    and
+                                    industry trends. Actively pursuing academic excellence with a focus on Block Chain
+                                    Technology and AI to enhance skills for innovative full-stack development.
+                                </p>
+                            </div>
+                        </div>
+                        <a href="https://www.linkedin.com/in/eshwara-rao-allu/" class="button">Follow Me on LinkedIn</a>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-top">
+                            <img class="box-image" src="{{ url_for('static', filename='images/anji.jpg') }}"
+                                alt="anji.jpg">
+                            <div class="title-flex">
+                                <h3 class="box-title">Prasanna Anjaneyulu Ananthasetty</h3>
+                                <h5 class="user-follow-info">Front End Developer</h5>
+                            </div>
+                            <div class="description">
+                                <p>Self-motivated individual with a passion for technology and innovation.</p>
+                                <p>Proven ability to independently acquire and apply new knowledge for project
+                                    development.
+                                </p>
+                            </div>
+                        </div>
+                        <a href="https://www.linkedin.com/in/prasanna-anjaneyulu-ananthasetty-82132423a"
+                            class="button">Follow
+                            Me on LinkedIn</a>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-top">
+                            <img class="box-image" src="{{ url_for('static', filename='images/hruthik.jpg') }}"
+                                alt="hruthik.jpg">
+                            <div class="title-flex">
+                                <h3 class="box-title">Hruthik Gonuguntla</h3>
+                                <h5 class="user-follow-info">Automated Testing</h5>
+                            </div>
+                            <div class="description">
+                                <p>A detail-oriented student with a keen interest in web development and design.</p>
+                                <p>Exhibits a proactive approach to learning, often seeking out additional resources
+                                    beyond
+                                    the
+                                    classroom.</p>
+                            </div>
+                        </div>
+                        <a href="https://www.linkedin.com/in/hruthik-gonuguntla-40055b284?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            class="button">Follow Me on LinkedIn</a>
+                    </div>
+
+                    <div class="box">
+                        <div class="box-top">
+                            <img class="box-image" src="{{ url_for('static', filename='images/hruthik.jpg') }}"
+                                alt="hruthik.jpg">
+                            <div class="title-flex">
+                                <h3 class="box-title">Karthik Gudavalli</h3>
+                                <h5 class="user-follow-info">UI/UX Designing</h5>
+                            </div>
+                            <div class="description">
+                                <p>Balancing academic studies with hands-on projects to reinforce theoretical
+                                    knowledge.
+                                </p>
+                                <p>Demonstrates a proactive attitude towards problem-solving and mastering new
+                                    technologies.
+                                </p>
+                            </div>
+                        </div>
+                        <a href="#" class="button">Follow Me on LinkedIn</a>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- <section class="main-section">
+            <div class="main-content">
+                <div class="main-inner-box1">
+                    <h2>QR Code Generation</h2>
+                    <p>We specialize in generating QR codes for each tablet sheet with fields including:</p>
+                    <ul>
+                        <li>Product ID: Check the status by clicking the "Check Status" button.</li>
+                        <li>Product Name: Check the status by clicking the "Check Status" button.</li>
+                        ... (other list items)...
+                    </ul>
+                </div>
+
+                <div class="main-inner-box2">
+                    <h2>Blockchain Technology Solution</h2>
+                    <p>Due to security concerns with the use of isopropyl and other chemicals leading to misinformation,
+                        we
+                        utilize blockchain technology to generate hash values and QR codes. Our solution aims to:</p>
+                    <ul>
+                         ... (list items) ... 
+                    </ul>
+                </div>
+            </div>
+        </section> -->
+        </form>
+    </main>
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+
+</html>

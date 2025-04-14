@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distributor Management System</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/pharmalogo.png') }}" type="image/x-icon">
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="../static/header.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='internal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='header1.css') }}">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+  #two {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .col-sm-6 {
+    margin-bottom: 20px;
+  }
+
+  .container {
+    margin-top: 20px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #090909;
+  }
+
+  th,
+  td {
+    border: 2px solid #030303;
+    padding: 8px;
+    text-align: left;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+
+  .info-container {
+    color: #fff;
+    /* White text */
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: -30px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    /* Light gray border */
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .btn-warning {
+    background-color: #ffc107;
+    /* Yellowish color */
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn-warning:hover {
+    background-color: #ffca28;
+    /* Lighter yellow on hover */
+  }
+
+  span {
+    display: block;
+    margin-top: 10px;
+  }
+
+  span.error {
+    color: red;
+  }
+
+  span.success {
+    color: green;
+  }
+
+  h1,
+  h2 {
+    display: inline-block;
+    color: #165bbc;
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0;
+    /* Remove margin bottom */
+
+
+    &::after {
+      content: "";
+      width: 100%;
+      display: inline-block;
+      transform: translate(-0%, -15px);
+      height: 3px;
+      border-radius: 50%;
+      background-color: #ADC2E1;
+      opacity: 0.9;
+      background: linear-gradient(to right bottom, #839fc8, #2e64b0, #165bbc);
+    }
+  }
+
+  .container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -60px;
+    margin-bottom: 20px;
+  }
+
+  .container h2 {
+    display: inline-block;
+    color: #165bbc;
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0;
+    /* Remove margin bottom */
+  }
+
+  .container.col-sm-12 {
+    width: 90%;
+    margin: 20px auto;
+    margin-left: 90px;
+    margin-top: -30px;
+    /* Adjust margin as needed */
+  }
+</style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  {% include 'header-inner.html' %}
+
+  <div class="info-container">
+    <h1>Product Management System</h1>
+
+  </div>
+
+
+  <!-- Popup container -->
+  <!-- Product details form -->
+  <div class="container">
+    <h2 id="popupTitle">Add Product</h2>
+    <form id="two" action="/productForm" method="post">
+      <div class="col-sm-6">
+
+        <label for="productId">1. Product ID:</label>
+        <input type="text" id="productId" name="productId" class="form-control" required>
+
+        <br>
+        <label for="productName">2. Product Name:</label>
+        <input type="text" id="productName" name="productName" class="form-control" required>
+
+        <br>
+        <label for="manufacturerInfo">3. Manufacturing Information:</br>
+          3.1. Manufacturing Company Name</br>
+          3.1. Ingredients used for making product</br>
+          3.2. Storage Conditions</br>
+          3.3. Price of the Product</br>
+          3.4. Warnings and Precautions</br>
+          3.5. Instructions for Use</br>
+        </label>
+        <input type="text" id="manufacturerInfo" name="manufacturerInfo" class="form-control" required>
+
+        <br>
+        <label for="lotNumber">4. Lot or Batch Number:</label>
+        <input type="text" id="lotNumber" name="lotNumber" class="form-control" required>
+
+
+      </div>
+      <div class="col-sm-6" style="margin-top: -40px;">
+
+        <label for="manufacturingDate">5. Manufacturing Date:</label>
+        <input type="date" id="manufacturingDate" name="manufacturingDate" class="form-control" required>
+
+        <br>
+        <label for="expirationDate">6. Expiration Date:</label>
+        <input type="date" id="expirationDate" name="expirationDate" class="form-control" required>
+
+        <br>
+        <label for="serialNumber">7.Product Price:</label>
+        <input type="text" id="serialNumber" name="serialNumber" class="form-control" required>
+        <br>
+        <label for="udi">8. Unique Device Identifier (UDI) / Serial Number:</label>
+        <input type="text" id="udi" name="uid" class="form-control" required>
+
+        <br>
+        <!-- Display messages -->
+        <div id="statusMessage" class="message"></div> <br />
+        <button type="submit" class="btn btn-success" style="margin-left: 20px;">Add Product</button>
+      </div>
+
+    </form>
+
+    <!-- Close button -->
+
+  </div>
+  <span style="color:green; margin-left: 1100px;margin-top: -90px;">{{res}}</span>
+  <span style="color:red; margin-left: 1100px;margin-top: -90px;">{{err}}</span>
+
+  </div>
+
+  <script src="{{ url_for('static', filename='js/static.js') }}" defer></script>
+
+</body>
+
+</html>
