@@ -101,6 +101,6 @@ This is our Application.
 
 If any queries regarding this application feel free to ask.
 
-Contact details - Name       : Allu Eshwara rao
-                  Gmail      : allueshwararao@gmail.com
-                  Linked inn : [https://www.linkedin.com/in/eshwara-rao-allu/].
+Contact details - Name       : Karthik
+                  Gmail      : karthikgudavalli7@gmail.com
+                  Linkedin : [https://www.linkedin.com/in/karthikgudavalli].
